@@ -732,7 +732,7 @@ sync.getMatches = function (elems, url, attr, data) {
         ]);
 
         if (currentMax < commonPrefix.length) {
-            if (commonPrefix.split('/').length > 2) {
+            if (commonPrefix.split('/').length > 3) {
                 maxEl = elems[i];
                 currentMax = commonPrefix.length;
             }
@@ -776,6 +776,9 @@ sync.getElems = function(fileExtension) {
  * @param confirm
  */
 sync.reloadBrowser = function (confirm) {
+    // disallow hard reload
+    return;
+
     emitter.emit("browser:hardReload", {
         scrollPosition: utils.getBrowserScrollPosition()
     });
